@@ -13,6 +13,16 @@ app.get('/', function(request, response) {
   response.render('pages/index');
 });
 
+app.get("/page/:id",function(request, response){
+    var id = request.params.id;
+    // do something with id
+    // send a response to user based on id
+    var obj = { id : id, Content : "content " +id };
+
+    response.writeHead(200, {"Content-Type": "application/json"});
+    response.write(JSON.stringify(obj));
+});
+
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
